@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN echo "deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti" > /etc/apt/sources.list.d/20ubiquiti.list && \
   echo 'deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50 && \
-  apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10 && \
+  apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 
 RUN apt-get -q update && apt-get install -qy --force-yes --no-install-recommends curl mongodb-org-server binutils jsvc java8-runtime-headless && \
   curl --insecure -L https://www.ubnt.com/downloads/unifi/5.5.5-0a0e7c06fb/unifi_sysvinit_all.deb -o /tmp/unifi_sysvinit_all.deb && \
