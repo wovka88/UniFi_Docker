@@ -24,13 +24,6 @@ RUN apt-get -q update && apt-get install -qy --force-yes --no-install-recommends
 RUN ln -s /var/lib/unifi /usr/lib/unifi/data
 EXPOSE 6789/tcp 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 3478/udp
 
-## Uncommenting these allows unifi to run as user nobody but I don't know for sure that all features work so leaving commented out for now
-#RUN chown -R nobody:nogroup /usr/lib/unifi && \
-#    chown -R nobody:nogroup /var/lib/unifi && \
-#    chown -R nobody:nogroup /var/log/unifi && \
-#    chown -R nobody:nogroup /var/run/unifi
-#USER nobody
-
 WORKDIR /var/lib/unifi
 
 ENTRYPOINT ["/usr/bin/java", "-Xmx1024M", "-jar", "/usr/lib/unifi/lib/ace.jar"]
