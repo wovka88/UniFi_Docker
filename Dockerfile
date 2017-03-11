@@ -11,7 +11,7 @@ RUN echo "deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti" > /etc
   apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 
 RUN apt-get -q update && apt-get install -qy --force-yes --no-install-recommends curl mongodb-org-server binutils jsvc && \
-  curl --insecure -L https://www.ubnt.com/downloads/unifi/5.5.6-b559495f0c/unifi_sysvinit_all.deb -o /tmp/unifi_sysvinit_all.deb && \
+  curl --insecure -L https://www.ubnt.com/downloads/unifi/5.5.7-0cbda0cd4a/unifi_sysvinit_all.deb -o /tmp/unifi_sysvinit_all.deb && \
   dpkg -i /tmp/unifi_sysvinit_all.deb || /bin/true && apt-get -yf --force-yes install && \
   apt-get -q clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
