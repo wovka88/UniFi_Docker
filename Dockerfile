@@ -1,9 +1,11 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER wovka88 <wovka@icloud.com>
 
-VOLUME ["/var/lib/unifi", "/var/log/unifi", "/var/run/unifi", "/usr/lib/unifi/work"]
+VOLUME ["/var/lib/unifi", "/var/log/unifi", "/var/run/unifi"]
 
 ENV DEBIAN_FRONTEND noninteractive
+
+ENV UNIFIURL=https://www.ubnt.com/downloads/unifi/5.5.8-f7e54e94a4/unifi_sysvinit_all.deb
 
 RUN echo "deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti" > /etc/apt/sources.list.d/20ubiquiti.list && \
   echo 'deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list && \
@@ -11,7 +13,7 @@ RUN echo "deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti" > /etc
   apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 
 RUN apt-get -q update && apt-get install -qy --force-yes --no-install-recommends curl mongodb-org-server binutils jsvc && \
-  curl --insecure -L https://www.ubnt.com/downloads/unifi/5.5.8-f7e54e94a4/unifi_sysvinit_all.deb -o /tmp/unifi_sysvinit_all.deb && \
+  curl --insecure -L ${UNIFIURL} -o /tmp/unifi_sysvinit_all.deb && \
   dpkg -i /tmp/unifi_sysvinit_all.deb || /bin/true && apt-get -yf --force-yes install && \
   apt-get -q clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
