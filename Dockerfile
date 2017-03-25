@@ -11,15 +11,10 @@ RUN echo "deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti" > /etc
   apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
 
 RUN apt-get -q update && apt-get install -qy --force-yes --no-install-recommends curl mongodb-org-server binutils jsvc && \
-  curl --insecure -L https://www.ubnt.com/downloads/unifi/5.5.8-f7e54e94a4/unifi_sysvinit_all.deb -o /tmp/unifi_sysvinit_all.deb && \
+  curl --insecure -L https://www.ubnt.com/downloads/unifi/5.6.1-0fab4f5321/unifi_sysvinit_all.deb -o /tmp/unifi_sysvinit_all.deb && \
   dpkg -i /tmp/unifi_sysvinit_all.deb || /bin/true && apt-get -yf --force-yes install && \
   apt-get -q clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-#RUN apt-get -q update && \
-#  apt-get install -qy --force-yes --no-install-recommends unifi && \
-#  apt-get -q clean && \
-#  rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /var/lib/unifi /usr/lib/unifi/data
 EXPOSE 6789/tcp 8080/tcp 8081/tcp 8443/tcp 8843/tcp 8880/tcp 3478/udp
