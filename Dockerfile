@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ENV UNIFIURL=https://www.ubnt.com/downloads/unifi/5.5.8-f7e54e94a4/unifi_sysvinit_all.deb
 
-RUN apt-get update && apt-get install -qy --force-yes --no-install-recommends gnupg && echo "deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti" > /etc/apt/sources.list.d/20ubiquiti.list && \
+RUN echo "deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti" > /etc/apt/sources.list.d/20ubiquiti.list && \
   echo "deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen" > /etc/apt/sources.list.d/mongodb.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50 && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
