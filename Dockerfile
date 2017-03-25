@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:16.10
 MAINTAINER wovka88 <wovka@icloud.com>
 
 VOLUME ["/var/lib/unifi", "/var/log/unifi", "/var/run/unifi"]
