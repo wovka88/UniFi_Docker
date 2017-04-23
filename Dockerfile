@@ -5,7 +5,7 @@ VOLUME ["/var/lib/unifi", "/var/log/unifi", "/var/run/unifi"]
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV UNIFIURL=https://www.ubnt.com/downloads/unifi/5.5.9-b608d637ae/unifi_sysvinit_all.deb
+ENV UNIFIURL=https://www.ubnt.com/downloads/unifi/5.5.11-5107276ec2/unifi_sysvinit_all.deb
 
 RUN apt-get update && apt-get install -qy dirmngr && echo "deb http://www.ubnt.com/downloads/unifi/debian unifi5 ubiquiti" > /etc/apt/sources.list.d/20ubiquiti.list && \
   echo "deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen" > /etc/apt/sources.list.d/mongodb.list && \
